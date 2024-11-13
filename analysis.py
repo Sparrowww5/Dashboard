@@ -15,9 +15,7 @@
 #   - This analysis will help contextualize wealth accumulation trends within broader economic shifts.
 # * How Do Economic Indicators (CPI Change, Tax Revenue) Correlate with Wealth Levels of Billionaires?
 #   - This inquiry aims to assess how changes in consumer price index (CPI) and tax revenue correlate with the wealth levels of billionaires, offering insights into how macroeconomic factors influence individual wealth.
-# 
 
-# In[1]:
 
 
 import numpy as np
@@ -33,26 +31,21 @@ import hvplot.pandas  # To use hvplot with pandas
 from bokeh.models import HoverTool
 
 
-# In[2]:
 
 
 df = pd.read_excel('Data_cleaned.xlsx')
 idf = df.interactive()
 
 
-# In[3]:
 
 
 df.head()
 
 
-# In[4]:
 
 
 df.columns
 
-
-# In[5]:
 
 
 df['finalWorth'] = df['finalWorth'].replace({'\$': '', ',': ''}, regex=True).astype(float)
@@ -65,14 +58,11 @@ df['is_young'] = df['age'] < 40
 # ## 1. Typical wealth of Billionaires in Fields
 # ***Goal***: *To identify which industries possess the most wealth accumulation*
 
-# In[6]:
 
 
 basic_stats = df['finalWorth'].describe()
 print(basic_stats)
 
-
-# In[7]:
 
 
 from bokeh.palettes import Plasma256
@@ -99,7 +89,6 @@ wealth_distribution_section = pn.Column(
 )
 
 
-# In[8]:
 
 
 category_select = pn.widgets.Select(name='Select Category', options=df['category'].unique().tolist(), value='Technology')
@@ -118,7 +107,6 @@ average_wealth = pn.Column(
 # ## 2. Differences in the Number of Billionaires in each Country
 # ***Goal***: *To examine the distribution of billionaires across countries and their wealth levels*
 
-# In[9]:
 
 
 category_select = pn.widgets.Select(name='Select Category', options=df['category'].unique().tolist(), value='Technology')
@@ -160,7 +148,6 @@ country_section = pn.Column(
 # ## 3. Connection between Billionaires' Ages and Worth Levels
 # ***Goal***: *To explore trends in wealth growth over time*
 
-# In[10]:
 
 
 age_slider = pn.widgets.RangeSlider(name='Age Range', start=0, end=100, value=(0, 40))
@@ -184,7 +171,6 @@ age_wealth_section = pn.Column(
 # ## 4. Proportion of Young Billionaires
 # ***Goal***: *To investigate which industries attract younger billionaires (under 40), to determine if certain sectors foster earlier wealth accumulation.*
 
-# In[11]:
 
 
 young_age_cutoff = 40
@@ -216,7 +202,6 @@ young_billionaires_section = pn.Column(
 # ## 5. Change in Number of Billionaires Over the Past Decade
 # ***Goal:*** *To contextualize wealth trends within economic shifts*
 
-# In[12]:
 
 
 from matplotlib.ticker import MaxNLocator
@@ -266,7 +251,6 @@ billionaires_over_time_section = pn.Column(
 # ## 6. Economic Indicators and Wealth Levels of Billionaires
 # ***Goal:*** *to assess how changes in consumer price index (CPI) and tax revenue correlate with the wealth levels of billionaires.*
 
-# In[13]:
 
 
 from bokeh.models import HoverTool
@@ -303,7 +287,6 @@ economic_indicators = pn.Column(
 )
 
 
-# In[ ]:
 
 
 template = pn.template.MaterialTemplate(
