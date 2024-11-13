@@ -3,6 +3,6 @@ bokeh
 hvplot
 pandas
 numpy
-matplotlib.pyplot
+matplotlib
 seaborn
 holoviews
