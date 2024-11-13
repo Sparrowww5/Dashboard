@@ -1,0 +1,8 @@
+panel
+bokeh
+hvplot
+pandas
+numpy
+matplotlib.pyplot
+seaborn
+holoviews
